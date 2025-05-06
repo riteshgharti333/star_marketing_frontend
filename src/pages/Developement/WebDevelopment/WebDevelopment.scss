@@ -1,0 +1,191 @@
+@use "../../../styles/responsive.scss" as *;
+
+.webDevelopment {
+  background: #f1f1f1;
+  .development-top {
+    padding: 100px 0px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .webDevelopment-teams {
+    background: #121212;
+    margin-top: 100px;
+    border-radius: 30px;
+    .webDevelopment-teams-container {
+      padding: 100px 0px;
+      max-width: 1200px;
+      margin: auto;
+
+      @include xl {
+        padding: 100px 40px;
+      }
+
+      @include sm {
+        padding: 100px 10px;
+      }
+
+      .webDevelopment-teams-top {
+        p {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          flex: 3;
+          font-size: 16px;
+          color: #b3b3b3;
+          text-transform: uppercase;
+          font-weight: 500;
+
+          .dot {
+            height: 10px;
+            width: 10px;
+            background: #ff7555;
+            border-radius: 50%;
+          }
+        }
+
+        h2 {
+          font-size: 30px;
+          color: #fff;
+          margin-top: 20px;
+          font-family: $heading-font;
+        }
+      }
+
+      .webDevelopment-cards {
+        margin: 30px 0px 0px 0px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+
+        @include sm {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .webDevelopment-card {
+          img {
+            width: 100%;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  .webDevelopment-user {
+    display: flex;
+    max-width: 1200px;
+    padding: 100px 0px;
+    margin: auto;
+    gap: 10%;
+
+    @include xl {
+      padding: 100px 40px;
+    }
+
+    @include lg {
+      flex-direction: column;
+      max-width: 750px;
+      gap: 40px;
+      padding: 100px 20px;
+    }
+
+    @include sm {
+      padding: 100px 10px;
+    }
+    .webDevelopment-user-left {
+      flex: 1;
+
+      img {
+        width: 100%;
+        border-radius: 20px;
+      }
+    }
+    .webDevelopment-user-right {
+      flex: 1;
+
+      h2 {
+        font-size: 25px;
+        font-family: $heading-font;
+        line-height: 1.5;
+
+        @include sm {
+          font-size: 18px;
+        }
+      }
+
+      ul {
+        margin-top: 20px;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        li {
+          display: flex;
+          gap: 10px;
+
+          .dev-icon {
+            font-size: 20px;
+            color: $primary-color;
+            flex-shrink: 0;
+            margin-top: 3px;
+          }
+
+          p {
+            font-size: 18px;
+            color: #7c7c7c;
+            line-height: 1.5;
+            span {
+              color: #000;
+            }
+
+            @include sm {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .bottom-btn {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+  }
+}
+
+/* Custom Nav Buttons */
+.graphic-nav-buttons {
+  display: flex;
+  z-index: 10;
+  margin-top: 40px;
+  gap: 30px;
+
+  .graphic-button-prev-custom,
+  .graphic-button-next-custom {
+    background-color: transparent;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    &.disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  }
+
+  .graphic-button-prev-custom:hover,
+  .graphic-button-next-custom:hover {
+    background-color: #000;
+    color: #fff;
+  }
+}

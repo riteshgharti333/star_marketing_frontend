@@ -1,0 +1,88 @@
+@use "../../../styles/responsive.scss" as *;
+
+.aboutSlider {
+  .aboutSlider-imgs {
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+
+    .aboutSlider-track {
+      display: flex;
+      gap: 40px;
+      width: max-content;
+      animation: scroll 30s linear infinite;
+
+      @include md {
+        gap: 20px;
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .aboutslider-img {
+        flex-shrink: 0;
+        width: 300px;
+        border-radius: 20px;
+
+        @include md {
+          width: 150px;
+        }
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: 20px;
+        }
+      }
+    }
+  }
+
+  .aboutSlider-imgs2 {
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    margin-top: 70px;
+
+    .aboutSlider-track {
+      display: flex;
+      gap: 40px;
+      width: max-content;
+      animation: scrollReverse 30s linear infinite;
+
+      @include md {
+        gap: 20px;
+      }
+
+      @keyframes scrollReverse {
+        0% {
+          transform: translateX(-50%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      .aboutslider-img {
+        flex-shrink: 0;
+        width: 300px;
+        border-radius: 20px;
+
+        @include md {
+          width: 150px;
+        }
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: 20px;
+        }
+      }
+    }
+  }
+}

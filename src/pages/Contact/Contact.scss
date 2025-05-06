@@ -1,0 +1,287 @@
+@use "../../styles/responsive.scss" as *;
+
+.contact {
+  background: #f1f1f1;
+
+  .contact-top {
+    padding: 150px 0px 100px 0px;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    gap: 10%;
+    position: relative;
+
+    @include xl {
+      padding: 150px 10px 100px 10px;
+    }
+
+    @include md {
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    .contact-top-left {
+      flex: 4;
+      position: sticky;
+      align-self: flex-start;
+      top: 120px;
+
+      @include md {
+        position: static;
+      }
+
+      .contact-top-left-top {
+        h2 {
+          font-size: 30px;
+          font-family: $heading-font;
+
+          @include sm {
+            font-size: 25px;
+          }
+        }
+        p {
+          color: $secondary-color;
+          margin-top: 30px;
+          line-height: 1.5;
+          font-size: 18px;
+          font-weight: 500;
+
+          @include sm {
+            font-size: 16px;
+          }
+        }
+      }
+
+      .contact-top-left-items {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        @include md {
+          margin-top: 60px;
+        }
+
+        .contact-top-left-item {
+          p {
+            &:first-child {
+              margin-bottom: 10px;
+              font-size: 18px;
+              font-weight: 500;
+
+              @include sm {
+                font-size: 14px;
+              }
+            }
+
+            &:last-child {
+              color: $secondary-color;
+              font-size: 20px;
+              border-bottom: 1px solid $secondary-color;
+              display: inline;
+              font-weight: 500;
+
+              @include sm {
+                font-size: 18px;
+              }
+            }
+          }
+        }
+      }
+
+      .contact-social {
+        margin-top: 60px;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+
+        span {
+          padding: 15px 20px;
+          border: 1px solid #ddd;
+          border-radius: 40px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+
+          &:hover {
+            background: #000;
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    .contact-top-right {
+      flex: 6;
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        .form-group {
+          display: flex;
+          flex-direction: column;
+
+          label {
+            font-size: 18px;
+            font-weight: 600;
+
+            .optional {
+              color: $secondary-color;
+            }
+          }
+
+          input,
+          textarea {
+            border: none;
+            padding: 30px;
+            margin-top: 20px;
+            border-radius: 20px;
+            outline: none;
+            font-size: 18px;
+
+            @include sm {
+              padding: 20px;
+            }
+          }
+
+          select {
+            border: none;
+            padding: 30px;
+            margin-top: 20px;
+            border-radius: 20px;
+            font-size: 18px;
+            outline: none;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-color: #fff;
+            background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 18px;
+            transition: all 0.3s ease;
+          }
+
+          .tell-p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: $secondary-color;
+            line-height: 1.5;
+            font-weight: 500;
+          }
+
+          textarea {
+            height: 200px;
+          }
+        }
+
+        .privacy {
+          display: flex;
+          gap: 30px;
+          align-items: flex-start;
+
+          input {
+            height: 40px;
+            width: 40px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+          }
+          .privacy-top {
+            p {
+              color: $secondary-color;
+
+              font-weight: 500;
+              font-weight: 16px;
+
+              span {
+                color: #000;
+                border-bottom: 1px solid #000;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                  color: $primary-color;
+                  border-bottom: 1px solid $primary-color;
+                }
+              }
+
+              &:last-child {
+                margin-top: 10px;
+                font-size: 14px;
+                color: $secondary-color;
+                line-height: 1.5;
+                font-weight: 500;
+                margin-top: 20px;
+              }
+            }
+          }
+        }
+
+        button {
+          background: $primary-color;
+          padding: 15px 20px;
+          color: #fff;
+          border: none;
+          width: max-content;
+          border-radius: 5px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          transition: all 0.3s ease-in-out;
+
+          &:hover {
+            background: #000;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  .contact-bottom {
+    padding-bottom: 100px;
+    max-width: 1200px;
+    margin: auto;
+
+    @include xl {
+      padding: 0px 10px 100px 10px;
+    }
+
+    h2 {
+      font-size: 30px;
+      font-family: $heading-font;
+      margin-bottom: 10px;
+
+      @include sm {
+        font-size: 25px;
+      }
+    }
+
+    .contact-bottom-address {
+      p {
+        line-height: 1.5;
+        font-size: 18px;
+        color: $secondary-color;
+        font-weight: 600;
+        margin-bottom: 10px;
+
+        @include sm {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .contact-bottom-map {
+      margin-top: 30px;
+      iframe {
+        border-radius: 20px;
+      }
+    }
+  }
+}

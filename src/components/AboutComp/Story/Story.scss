@@ -1,0 +1,65 @@
+@use "../../../styles/responsive.scss" as *;
+
+.story {
+  padding: 100px 0px;
+  .story-top {
+    display: flex;
+    max-width: 1000px;
+    margin: auto;
+
+    @include lg {
+      flex-direction: column;
+      max-width: 750px;
+      padding: 0px 10px;
+    }
+
+    .story-top-left {
+      flex: 4;
+      p {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 16px;
+        text-transform: uppercase;
+        color: #7c7c7c;
+        font-weight: 600;
+        .dot {
+          height: 10px;
+          width: 10px;
+          background: $primary-color;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    .story-top-right {
+      flex: 6;
+
+      h2 {
+        font-size: 30px;
+        font-family: $heading-font;
+        margin-bottom: 30px;
+        line-height: 1.5;
+
+        @include lg {
+          margin-top: 10px;
+        }
+
+        @include sm {
+          font-size: 22px;
+        }
+      }
+
+      p {
+        color: #7c7c7c;
+        line-height: 1.5;
+        font-size: 18px;
+        font-weight: 500;
+
+        @include sm {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

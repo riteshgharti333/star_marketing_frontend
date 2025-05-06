@@ -1,0 +1,128 @@
+@use "../../styles/responsive.scss" as *;
+
+.serviceTeam {
+  padding: 100px 0px;
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+
+  &.dev {
+    padding: 0px;
+
+    h2 {
+      color: #fff;
+    }
+
+    .graphicDesign-slider-card {
+      h4 {
+        font-size: 22px;
+        margin: 20px 0px 10px 0px;
+        color: #fff;
+      }
+      p {
+        color: #b3b3b3 !important;
+      }
+    }
+
+    .web-nav-buttons {
+      .web-button-prev-custom,
+      .web-button-next-custom {
+        background-color: transparent;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        cursor: pointer;
+        transition: 0.3s ease;
+
+        &.disabled {
+          opacity: 0.4;
+          pointer-events: none;
+        }
+      }
+
+      .web-button-prev-custom:hover,
+      .web-button-next-custom:hover {
+        background-color: #fff;
+        color: #000;
+      }
+    }
+  }
+
+  @include xl {
+    padding: 100px 10px;
+  }
+  h2 {
+    font-size: 30px;
+    font-family: $heading-font;
+    margin-top: 20px;
+    line-height: 1.5;
+
+    &.dev-title {
+      color: #fff;
+    }
+
+    @include sm {
+      font-size: 22px;
+    }
+  }
+
+  .graphicDesign-slider-cards {
+    margin-top: 40px;
+    .graphicDesign-slider-card {
+      img {
+        border-radius: 20px;
+        width: 100%;
+      }
+
+      h4 {
+        font-size: 22px;
+        margin: 20px 0px 10px 0px;
+      }
+      p {
+        color: #7c7c7c;
+      }
+    }
+  }
+}
+
+///////////
+/* Custom Nav Buttons */
+.web-nav-buttons {
+  display: flex;
+  z-index: 10;
+  margin-top: 40px;
+  gap: 30px;
+
+  .web-button-prev-custom,
+  .web-button-next-custom {
+    background-color: transparent;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    &.disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  }
+
+  .web-button-prev-custom:hover,
+  .web-button-next-custom:hover {
+    background-color: #000;
+    color: #fff;
+  }
+}

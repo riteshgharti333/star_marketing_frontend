@@ -1,0 +1,98 @@
+@use "../../styles/responsive.scss" as *;
+
+.service {
+  background: #121212;
+  border-radius: 30px;
+  .service-contaniner {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 20px;
+
+    @include sm {
+      padding: 60px 10px;
+    }
+    .service-top {
+      h2 {
+        color: #fff;
+        font-size: 40px;
+        margin-bottom: 30px;
+        font-family: $heading-font;
+
+        @include sm {
+          font-size: 25px;
+        }
+      }
+      p {
+        color: #b3b3b3;
+        width: 80%;
+        font-size: 18px;
+        line-height: 1.5;
+        font-weight: 500;
+
+        @include md {
+          width: 100%;
+        }
+      }
+    }
+
+    .service-cards {
+      margin-top: 40px;
+      position: relative;
+
+      .service-card {
+        display: flex;
+        gap: 100px;
+        background: #fff;
+        padding: 40px 50px;
+        border-radius: 20px;
+        position: sticky;
+        z-index: 1;
+        margin-bottom: 10px;
+        transition: transform 0.5s ease;
+        will-change: transform, opacity, background-color;
+
+        @include md {
+          padding: 20px;
+        }
+
+        .service-card-left {
+          span {
+            color: #7c7c7c;
+            font-weight: 500;
+            font-size: 18px;
+          }
+          h2 {
+            font-family: $heading-font;
+            margin: 30px 0px;
+            font-size: 30px;
+
+            @include sm {
+              font-size: 25px;
+            }
+          }
+          p {
+            color: #7c7c7c;
+            line-height: 1.5;
+            font-weight: 500;
+            font-size: 18px;
+            @include sm {
+              font-size: 16px;
+            }
+          }
+        }
+        .service-card-right {
+          @include lg {
+            display: none;
+          }
+          img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            border-radius: 10px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.wingstarnarketing.com/sitemap.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-homepage.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-about-us.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-contact-us.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-founder.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-web-design.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-graphic-design.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-branding.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-production.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-web-development.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-software-development.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-e-commerce.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-app-development.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-support-and-maintenance.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-testing.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-wordpress-development.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-marketing-strategy.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-holistic-marketing.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-seo.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-paid-advertising.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-social-media.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-content.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-conversion-rate-optimisation.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-data-analytics-and-reporting.xml
+
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-term.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-privacy.xml
+
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-how-website-works.xml
+Sitemap: https://www.wingstarnarketing.com/sitemaps/sitemap-how-social-media-works.xml
+

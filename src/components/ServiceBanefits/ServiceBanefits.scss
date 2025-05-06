@@ -1,0 +1,72 @@
+@use "../../styles/responsive.scss" as *;
+
+.marketing-strategy {
+  max-width: 1200px;
+  margin: auto;
+
+  @include xl {
+    padding: 0px 10px;
+  }
+  h2 {
+    font-family: $heading-font;
+    font-size: 30px;
+    line-height: 1.5;
+
+    @include sm {
+      font-size: 22px;
+    }
+  }
+
+  .marketing-strategy-cards {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+
+    @include md {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0px;
+    }
+
+    .marketing-strategy-card {
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding: 40px 0px;
+
+      @media (min-width: 769px) {
+        &:nth-last-child(-n + 3) {
+          border-top: none;
+          border-bottom: none;
+          padding-top: 10px;
+        }
+      }
+
+      @include md {
+        border-top: 1px solid #ddd;
+        border-bottom: none;
+      }
+
+      h5 {
+        font-size: 22px;
+        font-weight: 500;
+
+        @include sm {
+          font-size: 20px;
+        }
+      }
+
+      p {
+        line-height: 1.5;
+        color: $secondary-color;
+        margin-top: 30px;
+        font-size: 17px;
+        font-weight: 500;
+
+        @include sm {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

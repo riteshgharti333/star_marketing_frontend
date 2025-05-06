@@ -1,0 +1,137 @@
+@use "../../../styles/responsive.scss" as *;
+
+.workspage1 {
+  .workspage1-desc {
+    max-width: 1200px;
+    margin: auto;
+
+    @include xl {
+      padding: 0px 40px;
+    }
+
+    @include lg {
+      max-width: 750px;
+    }
+
+    @include sm {
+      padding: 0px 10px;
+    }
+    p {
+      font-size: 20px;
+      color: $secondary-color;
+      line-height: 1.7;
+      margin-top: 50px;
+      font-weight: 500;
+
+      @include sm {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .workspage1-user {
+    max-width: 1200px;
+    padding: 100px 0px;
+    margin: auto;
+    display: flex;
+    gap: 10%;
+    align-items: center;
+
+    &.work-desc2 {
+      flex-direction: row-reverse;
+      padding: 0px;
+
+      @include lg{
+        flex-direction: column;
+        max-width: 750px;
+        gap: 40px;
+        padding: 0px 20px;
+        align-items: normal;
+      }
+    }
+
+    @include xl {
+      padding: 100px 40px;
+    }
+
+    @include lg {
+      flex-direction: column;
+      max-width: 750px;
+      gap: 40px;
+      padding: 100px 20px;
+      align-items: normal;
+    }
+
+    @include sm {
+      padding: 100px 10px;
+    }
+
+    .workspage1-user-left {
+      flex: 1;
+
+      h2 {
+        font-size: 30px;
+        font-family: $heading-font;
+        line-height: 1.5;
+
+        @include sm {
+          font-size: 20px;
+        }
+      }
+
+      p {
+        font-size: 20px;
+        color: $secondary-color;
+        line-height: 1.5;
+        margin-top: 30px;
+        font-weight: 500;
+
+        @include sm {
+          font-size: 16px;
+        }
+      }
+
+      ul {
+        margin-left: 30px;
+        margin-top: 30px;
+
+        li {
+          margin-bottom: 20px;
+          font-size: 20px;
+          font-weight: 500;
+
+          @include sm {
+            font-size: 16px;
+          }
+
+          &::marker {
+            color: $primary-color;
+          }
+        }
+      }
+
+      .example-desc {
+        font-size: 18px;
+
+        @include sm {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .workspage1-user-right {
+      flex: 1;
+
+      img {
+        width: 100%;
+        height: 600px;
+        border-radius: 20px;
+        object-fit: cover;
+
+        @include sm {
+          height: 100%;
+        }
+      }
+    }
+  }
+}

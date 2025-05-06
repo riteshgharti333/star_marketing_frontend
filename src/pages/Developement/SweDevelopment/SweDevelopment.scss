@@ -1,0 +1,179 @@
+@use "../../../styles/responsive.scss" as *;
+
+.sweDevelopment {
+  background: #f1f1f1;
+  .development-top {
+    padding: 100px 0px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .sweDevelopment-user {
+    display: flex;
+    max-width: 1200px;
+    margin: auto;
+    gap: 10%;
+
+    @include xl {
+      padding: 0px 40px;
+    }
+
+    @include lg {
+      flex-direction: column;
+      max-width: 750px;
+      gap: 40px;
+      padding: 0px 20px;
+    }
+
+    @include sm {
+      padding: 0px 10px;
+    }
+
+    .sweDevelopment-user-left {
+      flex: 1;
+      img {
+        width: 100%;
+        height: 600px;
+        border-radius: 20px;
+        object-fit: cover;
+
+        @include sm {
+          height: 100%;
+        }
+      }
+    }
+    .sweDevelopment-user-right {
+      flex: 1;
+
+      h2 {
+        font-size: 30px;
+        font-family: $heading-font;
+        line-height: 1.5;
+
+        @include md {
+          font-size: 22px;
+        }
+
+        @include sm {
+          font-size: 18px;
+        }
+      }
+
+      p {
+        font-size: 18px;
+        color: #7c7c7c;
+        line-height: 1.5;
+        margin-top: 30px;
+        font-weight: 500;
+
+        @include sm {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .sweDevelopment-teams {
+    background: #121212;
+    margin-top: 100px;
+    border-radius: 30px;
+    .sweDevelopment-teams-container {
+      padding: 100px 0px;
+      max-width: 1200px;
+      margin: auto;
+
+      @include xl {
+        padding: 100px 40px;
+      }
+
+      @include sm {
+        padding: 100px 10px;
+      }
+
+      .sweDevelopment-teams-top {
+        p {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          flex: 3;
+          font-size: 16px;
+          color: #b3b3b3;
+          text-transform: uppercase;
+          font-weight: 500;
+
+          .dot {
+            height: 10px;
+            width: 10px;
+            background: #ff7555;
+            border-radius: 50%;
+          }
+        }
+
+        h2 {
+          font-size: 30px;
+          color: #fff;
+          margin-top: 20px;
+          font-family: $heading-font;
+        }
+      }
+
+      .sweDevelopment-cards {
+        margin: 30px 0px 0px 0px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+
+        @include sm {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .sweDevelopment-card {
+          img {
+            width: 100%;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  .bottom-btn {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+}
+
+/* Custom Nav Buttons */
+.graphic-nav-buttons {
+  display: flex;
+  z-index: 10;
+  margin-top: 40px;
+  gap: 30px;
+
+  .graphic-button-prev-custom,
+  .graphic-button-next-custom {
+    background-color: transparent;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    &.disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  }
+
+  .graphic-button-prev-custom:hover,
+  .graphic-button-next-custom:hover {
+    background-color: #000;
+    color: #fff;
+  }
+}

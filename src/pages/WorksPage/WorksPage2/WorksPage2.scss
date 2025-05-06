@@ -1,0 +1,69 @@
+@use "../../../styles/responsive.scss" as *;
+
+.worksPage2 {
+  overflow: hidden;
+  .worksPage2-desc {
+    max-width: 1200px;
+    margin: auto;
+    @include xl {
+      padding: 0px 10px;
+    }
+    p {
+      font-size: 20px;
+      color: $secondary-color;
+      line-height: 1.7;
+      margin-top: 50px;
+      font-weight: 500;
+
+      @include sm {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .work-teams {
+    background: #121212;
+    margin-top: 100px;
+    border-radius: 30px;
+    margin-bottom: 100px;
+    .work-teams-container {
+      padding: 100px 0px 0px 0px;
+      max-width: 1200px;
+      margin: auto;
+
+      @include xl {
+        padding: 100px 40px 0px 40px;
+      }
+
+      @include sm {
+        padding: 100px 10px 0px 10px;
+      }
+    }
+  }
+
+  .worksPage2-last-desc {
+    max-width: 1200px;
+    margin: auto;
+    padding-bottom: 100px;
+    @include xl {
+      padding: 0px 10px 100px 10px;
+    }
+    p {
+      font-size: 20px;
+      color: $secondary-color;
+      line-height: 1.7;
+      margin-top: 50px;
+      font-weight: 500;
+
+      .big-per {
+        color: #000;
+        font-size: 30px;
+        font-weight: bold;
+      }
+
+      @include sm {
+        font-size: 16px;
+      }
+    }
+  }
+}

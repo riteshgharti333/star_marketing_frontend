@@ -1,0 +1,157 @@
+@use "../../../styles/responsive.scss" as *;
+
+.aboutMission {
+  max-width: 1000px;
+  margin: auto;
+  padding: 100px 0px;
+
+  @include lg {
+    padding: 100px 10px;
+    max-width: 750px;
+  }
+
+  .about-mission {
+    h1 {
+      font-family: $heading-font;
+      margin-bottom: 40px;
+      line-height: 1.5;
+
+      @include md {
+        font-size: 30px;
+      }
+
+      @include sm {
+        font-size: 22px;
+      }
+    }
+
+    .about-mission-desc {
+      display: flex;
+      margin-top: 60px;
+
+      @include md {
+        flex-direction: column;
+      }
+
+      .about-mission-desc-left {
+        flex: 4;
+        p {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          font-size: 16px;
+          text-transform: uppercase;
+          color: #7c7c7c;
+          font-weight: 600;
+          .dot {
+            height: 10px;
+            width: 10px;
+            background: $primary-color;
+            border-radius: 50%;
+          }
+        }
+      }
+      .about-mission-desc-right {
+        flex: 6;
+        p {
+          color: #7c7c7c;
+          line-height: 1.5;
+          font-size: 18px;
+          font-weight: 500;
+
+          @include md {
+            flex-direction: column;
+            margin-top: 20px;
+          }
+
+          @include sm {
+            font-size: 16px;
+          }
+
+          &:last-child {
+            margin-top: 30px;
+          }
+        }
+      }
+    }
+  }
+
+  .about-vision {
+    display: flex;
+    padding: 100px 0px;
+
+    @include lg {
+      flex-direction: column-reverse;
+    }
+
+    .about-vision-left {
+      flex: 1;
+      p {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 16px;
+        text-transform: uppercase;
+        color: #7c7c7c;
+        font-weight: 600;
+        .dot {
+          height: 10px;
+          width: 10px;
+          background: $primary-color;
+          border-radius: 50%;
+        }
+      }
+
+      h3 {
+        color: #7c7c7c;
+        line-height: 1.5;
+        font-size: 18px;
+        font-weight: 500;
+        margin-top: 20px;
+
+        @include sm {
+          font-size: 16px;
+        }
+      }
+    }
+    .about-vision-right {
+      flex: 1;
+      display: flex;
+      gap: 20px;
+      justify-content: flex-end;
+      margin-bottom: 30px;
+
+      @include lg {
+        justify-content: center;
+      }
+
+      @include sm {
+        gap: 10px;
+      }
+
+      .img-desc {
+        width: 200px;
+        height: 300px;
+        background: #1488cc;
+        border-radius: 10px;
+        background: -webkit-linear-gradient(to right, #2b32b2, #1488cc);
+        background: linear-gradient(to right, #2b32b2, #1488cc);
+        object-fit: cover;
+
+        @include sm {
+          width: 100%;
+          height: 100%;
+        }
+
+        &.img2 {
+          @include sm {
+            display: none;
+          }
+        }
+        &:last-child {
+          margin-top: 50px;
+        }
+      }
+    }
+  }
+}
