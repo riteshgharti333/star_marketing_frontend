@@ -3,7 +3,6 @@
 .projects {
   max-width: 1200px;
   margin: auto;
-  width: 100%;
 
   @include xl {
     padding: 0px 10px;
@@ -14,6 +13,8 @@
   }
 
   .projects-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 60px;
     margin-top: 30px;
 
@@ -80,40 +81,4 @@
       }
     }
   }
-}
-
-////////////////
-/* Custom Nav Buttons */
-.graphic-nav-buttons {
-  display: flex;
-  z-index: 10;
-  margin-top: 40px;
-  gap: 30px;
-}
-
-.graphic-button-prev-custom,
-.graphic-button-next-custom {
-  background-color: transparent;
-  border: 1px solid #ddd;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000;
-  cursor: pointer;
-  transition: 0.3s ease;
-
-  &.disabled {
-    opacity: 0.4;
-    pointer-events: none;
-  }
-}
-
-.graphic-button-prev-custom:hover,
-.graphic-button-next-custom:hover {
-  background-color: #000;
-  color: #fff;
 }

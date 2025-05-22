@@ -8,66 +8,73 @@
   align-items: center;
 
   @include xl {
-    padding: 100px 40px;
+    padding: 0px 40px;
   }
 
   @include lg {
     flex-direction: column;
     max-width: 750px;
     gap: 40px;
-    padding: 100px 20px;
+    padding: 0px 20px;
+    align-items: normal;
   }
 
   @include sm {
-    padding: 100px 10px;
+    padding: 0px 10px;
   }
 
   .howitworks-left {
     flex: 1;
 
-    .howitworks-left-top{
-        h2 {
-            font-size: 30px;
-            font-family: $heading-font;
-            line-height: 1.5;
-      
-            @include sm {
-              font-size: 22px;
-            }
-          }
-      
-          p {
-            font-size: 18px;
-            color: $secondary-color;
-            line-height: 1.5;
-            margin-top: 30px;
-            font-weight: 500;
-      
-            @include sm {
-              font-size: 16px;
-            }
-          }
+    .howitworks-left-top {
+      h2 {
+        font-size: 30px;
+        font-family: $heading-font;
+        line-height: 1.5;
+
+        @include sm {
+          font-size: 27px;
+        }
+      }
+
+      p {
+        font-size: 18px;
+        color: $secondary-color;
+        line-height: 1.5;
+        margin-top: 30px;
+        font-weight: 500;
+
+        @include sm {
+          font-size: 16px;
+        }
+      }
     }
 
-.howitworks-left-items{
-    margin-top: 100px;
-    display: flex;
-    flex-direction: column;
-    font-weight: bold;
-    gap: 30px;
+    .howitworks-left-items {
+      margin-top: 100px;
+      display: flex;
+      flex-direction: column;
+      font-weight: bold;
+      gap: 30px;
 
-  .how-link{
+      @include lg {
+        margin: 50px 0px 30px 0px;
+      }
+
+      .how-link {
         font-size: 30px;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
-       
-        &:hover{
-            color: $primary-color;
+
+        @include sm {
+          font-size: 22px;
         }
 
+        &:hover {
+          color: $primary-color;
+        }
+      }
     }
-}
-   
   }
 
   .howitworks-right {

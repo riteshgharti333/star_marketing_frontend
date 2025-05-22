@@ -205,46 +205,7 @@ const Navbar = () => {
               </div>
             )}
           </li>
-          <li>
-            <Link onClick={() => toggleCard(4)}>How it works?</Link>
-
-            {openCardIndex === 4 && (
-              <div className="nav-card" ref={cardRef}>
-                <div className="nav-card-left">
-                  <div className="nav-card-left-top">
-                    <p>{marketingData.title}</p>
-                    <p>{marketingData.desc}</p>
-                  </div>
-                  <hr />
-                  <div className="nav-card-left-bottom">
-                    <p>Explore</p>
-                    <div className="nav-card-links">
-                      {marketingData.submenu.map((item, index) => (
-                        <Link
-                          to={`${item.link}`}
-                          className="nav-card-link"
-                          key={index}
-                        >
-                          <span>{item.title}</span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                {navCards.map((item, index) => (
-                  <div className="nav-card-right" key={index}>
-                    <img
-                      src={item.mImg}
-                      alt="Company Overview"
-                      loading="lazy"
-                    />
-                    <p>{item.title}</p>
-                    <p>{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </li>
+         
           <li>
             <Link to={"/founder"}>Founder</Link>
           </li>
