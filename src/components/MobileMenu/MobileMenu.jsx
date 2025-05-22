@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./MobileMenu.scss";
 import { Link, useLocation } from "react-router-dom";
+import { baseUrl } from "../../main";
+import axios from "axios";
 
 const menuItems = [
   { title: "Home", link: "/" },
@@ -118,6 +120,82 @@ const MobileMenu = () => {
     };
   }, [isOpen]);
 
+  const [marketingNewData, setMarketingNewData] = useState([]);
+  const [developmentNewData, setDevelopmentNewData] = useState([]);
+  const [designNewData, setDesignNewData] = useState([]);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const { data } = await axios.get(`${baseUrl}/service/all-services`);
+        const services = data?.services || [];
+
+        const marketing = [];
+        const development = [];
+        const design = [];
+
+        services.forEach((service) => {
+          const selected = service?.selectedService?.toLowerCase();
+          if (selected === "marketing") marketing.push(service);
+          else if (selected === "development") development.push(service);
+          else if (selected === "design") design.push(service);
+        });
+
+        setMarketingNewData(marketing);
+        setDevelopmentNewData(development);
+        setDesignNewData(design);
+      } catch (err) {
+        console.error("❌ Error fetching services:", err);
+      }
+    };
+
+    fetchServices();
+  }, []);
+
+  const getMergedMenuItems = () => {
+    return menuItems.map((item) => {
+      if (item.title === "Marketing" && marketingNewData.length > 0) {
+        return {
+          ...item,
+          submenu: [
+            ...item.submenu,
+            ...marketingNewData.map((service) => ({
+              title: service.bannerSection?.serviceName,
+              link: `/service/${service._id}`,
+            })),
+          ],
+        };
+      }
+      if (item.title === "Development" && developmentNewData.length > 0) {
+        return {
+          ...item,
+          submenu: [
+            ...item.submenu,
+            ...developmentNewData.map((service) => ({
+              title: service.bannerSection?.serviceName,
+              link: `/service/${service._id}`,
+            })),
+          ],
+        };
+      }
+      if (item.title === "Design" && designNewData.length > 0) {
+        return {
+          ...item,
+          submenu: [
+            ...item.submenu,
+            ...designNewData.map((service) => ({
+              title: service.bannerSection?.serviceName,
+              link: `/service/${service._id}`,
+            })),
+          ],
+        };
+      }
+      return item;
+    });
+  };
+
+  const mergedMenuItems = getMergedMenuItems();
+
   return (
     <div className="mobileMenu" ref={menuRef}>
       {/* Toggle Button */}
@@ -137,7 +215,7 @@ const MobileMenu = () => {
             exit={{ y: -300, opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            {menuItems.map((item, i) => (
+            {mergedMenuItems.map((item, i) => (
               <li key={i} className="mobile-link">
                 {item.submenu ? (
                   <>

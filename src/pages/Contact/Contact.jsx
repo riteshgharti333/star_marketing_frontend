@@ -4,21 +4,24 @@ import toast from "react-hot-toast";
 import "./Contact.scss";
 import SEO from "../../components/SEO/SEO";
 
+import axios from "axios";
+import { baseUrl } from "../../main";
+
 const Contact = () => {
   const location = useLocation();
-  const baseUrl =
+  const conBaseUrl =
     import.meta.env.VITE_BASE_URL || "https://www.wingstarmarketing.com";
-  const fullUrl = `${baseUrl}${location.pathname}`;
+  const fullUrl = `${conBaseUrl}${location.pathname}`;
 
   const [formData, setFormData] = useState({
     name: "",
     businessName: "",
     email: "",
-    contact: "",
+    phoneNumber: "", // Changed from 'contact' to match backend
     projectType: "",
-    details: "",
+    projectDescription: "", // Changed from 'details' to match backend
     budget: "",
-    hearFrom: "",
+    heardAboutUs: "", // Changed from 'hearFrom' to match backend
     privacyAccepted: false,
   });
 
@@ -34,47 +37,56 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!formData.name || !formData.email || !formData.phoneNumber) {
+      toast.error("Please fill in all required fields");
+      return;
+    }
+
+    if (!formData.privacyAccepted) {
+      toast.error("Please accept the privacy policy to continue.");
+      return;
+    }
+
     if (!formData.privacyAccepted) {
       toast.error("Please accept the privacy policy to continue.");
       return;
     }
 
     setLoading(true);
-    const formAction = "https://formsubmit.co/starmarketingwing@gmail.com";
-
-    const formDataToSend = new FormData();
-    Object.entries(formData).forEach(([key, value]) => {
-      formDataToSend.append(key, value);
-    });
-
-    formDataToSend.append("_subject", "New Contact Form Submission");
-    formDataToSend.append("_captcha", "false");
-    formDataToSend.append("_template", "table");
 
     try {
-      const response = await fetch(formAction, {
-        method: "POST",
-        body: formDataToSend,
+      const response = await axios.post(`${baseUrl}/contact/new-contact`, {
+        name: formData.name,
+        businessName: formData.businessName,
+        email: formData.email,
+        phoneNumber: formData.phoneNumber,
+        projectType: formData.projectType,
+        projectDescription: formData.projectDescription,
+        budget: formData.budget,
+        heardAboutUs: formData.heardAboutUs,
       });
 
-      if (response.ok) {
+      if (response.data.success) {
         toast.success("Message sent successfully!");
         setFormData({
           name: "",
           businessName: "",
           email: "",
-          contact: "",
+          phoneNumber: "",
           projectType: "",
-          details: "",
+          projectDescription: "",
           budget: "",
-          hearFrom: "",
+          heardAboutUs: "",
           privacyAccepted: false,
         });
-      } else {
-        toast.error("Failed to send message. Please try again.");
       }
     } catch (error) {
-      toast.error("Something went wrong!");
+      console.error(error);
+      toast.error(
+        error.response?.data?.message ||
+          "Something went wrong. Please try again."
+      );
     } finally {
       setLoading(false);
     }
@@ -185,8 +197,8 @@ const Contact = () => {
               <label>Contact Number *</label>
               <input
                 type="tel"
-                name="contact"
-                value={formData.contact}
+                name="phoneNumber" // Changed from "contact"
+                value={formData.phoneNumber}
                 onChange={handleChange}
                 placeholder="0123456789"
                 required
@@ -222,8 +234,8 @@ const Contact = () => {
                 etc.
               </p>
               <textarea
-                name="details"
-                value={formData.details}
+                name="projectDescription" // Changed from "details"
+                value={formData.projectDescription}
                 onChange={handleChange}
                 placeholder="Please detail your requirements here..."
                 required
@@ -247,10 +259,9 @@ const Contact = () => {
                 <span className="optional">(Optional)</span>
               </label>
               <select
-                name="hearFrom"
-                value={formData.hearFrom}
+                name="heardAboutUs" // Changed from "hearFrom"
+                value={formData.heardAboutUs}
                 onChange={handleChange}
-                required
               >
                 <option value="">Please Select</option>
                 <option value="LinkedIn">LinkedIn</option>

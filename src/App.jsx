@@ -40,100 +40,113 @@ import OfferComp from "./components/OfferComp/OfferComp";
 import WorksPage1 from "./pages/WorksPage/WorksPage1/WorksPage1";
 import WorksPage2 from "./pages/WorksPage/WorksPage2/WorksPage2";
 
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import NewService from "./pages/NewService/NewService";
+
 function App() {
   useEffect(() => {
     initGA();
   }, []);
 
+  const queryClient = new QueryClient();
+
   return (
     <div className="app">
-      <CurtainLoader />
-      <ContactButtons />
-      <OfferComp />
-      <BrowserRouter>
-        <ScrollToTopAndTrack />
+      <QueryClientProvider client={queryClient}>
+        {/* <CurtainLoader /> */}
+        <ContactButtons />
+        {/* <OfferComp /> */}
+        <BrowserRouter>
+          {/* <ScrollToTopAndTrack /> */}
 
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/about-us" element={<About />} />
-          <Route path="/contact-us" element={<Contact />} />
-          <Route path="/founder" element={<Founder />} />
-          <Route path="/terms-and-conditions" element={<TermPage />} />
-          <Route path="/privacy-policy" element={<PrivacyPage />} />
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/about-us" element={<About />} />
+            <Route path="/contact-us" element={<Contact />} />
+            <Route path="/founder" element={<Founder />} />
+            <Route path="/terms-and-conditions" element={<TermPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPage />} />
 
-          <Route path="*" element={<NotFoundPage />} />
+            <Route path="*" element={<NotFoundPage />} />
 
-          {/* Design */}
-          <Route path="/design/web-design" element={<WebDesign />} />
-          <Route path="/design/graphic-design" element={<GraphicDesign />} />
-          <Route path="/design/branding" element={<Branding />} />
-          <Route path="/design/production" element={<Production />} />
+            {/* Design */}
+            <Route path="/design/web-design" element={<WebDesign />} />
+            <Route path="/design/graphic-design" element={<GraphicDesign />} />
+            <Route path="/design/branding" element={<Branding />} />
+            <Route path="/design/production" element={<Production />} />
 
-          {/* Development */}
-          <Route
-            path="/development/web-development"
-            element={<WebDevelopment />}
-          />
-          <Route
-            path="/development/software-development"
-            element={<SweDevelopment />}
-          />
-          <Route path="/development/e-commerce" element={<ECommerce />} />
-          <Route
-            path="/development/app-development"
-            element={<AppDevelopement />}
-          />
-          <Route
-            path="/development/support-and-maintenance"
-            element={<Support />}
-          />
+            {/* Development */}
+            <Route
+              path="/development/web-development"
+              element={<WebDevelopment />}
+            />
+            <Route
+              path="/development/software-development"
+              element={<SweDevelopment />}
+            />
+            <Route path="/development/e-commerce" element={<ECommerce />} />
+            <Route
+              path="/development/app-development"
+              element={<AppDevelopement />}
+            />
+            <Route
+              path="/development/support-and-maintenance"
+              element={<Support />}
+            />
 
-          <Route path="/development/testing" element={<Testing />} />
-          <Route
-            path="/development/wordpress-development"
-            element={<Wordpress />}
-          />
+            <Route path="/development/testing" element={<Testing />} />
+            <Route
+              path="/development/wordpress-development"
+              element={<Wordpress />}
+            />
 
-          {/* Marketing */}
-          <Route path="/marketing/marketing-strategy" element={<Marketing />} />
-          <Route path="/marketing/holistic-marketing" element={<Holistic />} />
-          <Route path="/marketing/seo" element={<Seo />} />
-          <Route path="/marketing/seo" element={<Seo />} />
-          <Route path="/marketing/paid-advertising" element={<Advertising />} />
-          <Route path="/marketing/social-media" element={<Social />} />
-          <Route path="/marketing/content" element={<Content />} />
-          <Route
-            path="/marketing/conversion-rate-optimisation"
-            element={<Cro />}
-          />
-          <Route
-            path="/marketing/data-analytics-and-reporting"
-            element={<Analytics />}
-          />
+            {/* Marketing */}
+            <Route
+              path="/marketing/marketing-strategy"
+              element={<Marketing />}
+            />
+            <Route
+              path="/marketing/holistic-marketing"
+              element={<Holistic />}
+            />
+            <Route path="/marketing/seo" element={<Seo />} />
+            <Route path="/marketing/seo" element={<Seo />} />
+            <Route
+              path="/marketing/paid-advertising"
+              element={<Advertising />}
+            />
+            <Route path="/marketing/social-media" element={<Social />} />
+            <Route path="/marketing/content" element={<Content />} />
+            <Route
+              path="/marketing/conversion-rate-optimisation"
+              element={<Cro />}
+            />
+            <Route
+              path="/marketing/data-analytics-and-reporting"
+              element={<Analytics />}
+            />
 
-          {/* How it works */}
-          <Route
-            path="/how-website-works?"
-            element={<WorksPage1 />}
-          />
-             <Route
-            path="/how-social-media-works?"
-            element={<WorksPage2 />}
-          />
-        </Routes>
+            {/* How it works */}
+            <Route path="/how-website-works?" element={<WorksPage1 />} />
+            <Route path="/how-social-media-works?" element={<WorksPage2 />} />
 
-        <Footer />
-        <Toaster
-          toastOptions={{
-            style: {
-              fontFamily: "Jost, sans-serif",
-              fontSize: "18px",
-              fontWeight: "600",
-            },
-          }}
-        />
-      </BrowserRouter>
+            {/* Service */}
+            <Route path="/service/:id" element={<NewService />} />
+          </Routes>
+
+          <Footer />
+          <Toaster
+            toastOptions={{
+              style: {
+                fontFamily: "Jost, sans-serif",
+                fontSize: "18px",
+                fontWeight: "600",
+              },
+            }}
+          />
+        </BrowserRouter>
+      </QueryClientProvider>
     </div>
   );
 }

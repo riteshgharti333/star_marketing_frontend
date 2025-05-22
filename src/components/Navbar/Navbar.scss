@@ -111,6 +111,7 @@
           border-radius: 10px;
           width: 600px;
           text-transform: capitalize;
+          overflow-y: auto;
 
           .nav-card-left {
             flex: 6;
@@ -135,6 +136,27 @@
             }
 
             .nav-card-left-bottom {
+              overflow-y: auto;
+              max-height: 250px;
+              overflow-y: auto;
+              padding-right: 10px;
+
+              &::-webkit-scrollbar {
+                width: 6px;
+              }
+
+              &::-webkit-scrollbar-track {
+                background: transparent;
+              }
+
+              &::-webkit-scrollbar-thumb {
+                background-color: rgba(0, 0, 0, 0.3);
+                border-radius: 10px;
+              }
+
+              scrollbar-width: thin;
+              scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+
               p {
                 font-size: 14px;
                 color: #585858;

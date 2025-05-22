@@ -224,18 +224,10 @@
 
             .homeAbout-bottom-card-profile-right {
               p {
-                &:first-child {
                   color: #fff;
                   font-size: 22px;
 
-                  @include sm {
-                    font-size: 18px;
-                  }
-                }
-                &:last-child {
-                  color: #7c7c7c;
-                  margin-top: 5px;
-                }
+                
               }
             }
           }

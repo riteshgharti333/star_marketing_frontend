@@ -3,6 +3,7 @@
 .projects {
   max-width: 1200px;
   margin: auto;
+  width: 100%;
 
   @include xl {
     padding: 0px 10px;
@@ -10,25 +11,27 @@
   h2 {
     font-size: 30px;
     font-family: $heading-font;
+    text-align: center;
+    margin-bottom: 30px;
   }
 
   .projects-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 60px;
-    margin-top: 30px;
+    // display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+    // gap: 60px;
+    // margin-top: 30px;
 
-    @include xl {
-      gap: 30px;
-    }
+    // @include xl {
+    //   gap: 30px;
+    // }
 
-    @include md {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    // @include md {
+    //   grid-template-columns: repeat(2, 1fr);
+    // }
 
-    @include sm {
-      grid-template-columns: repeat(1, 1fr);
-    }
+    // @include sm {
+    //   grid-template-columns: repeat(1, 1fr);
+    // }
     .projects-card {
       position: relative;
       overflow: hidden;

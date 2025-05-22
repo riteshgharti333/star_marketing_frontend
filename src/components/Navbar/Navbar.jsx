@@ -10,6 +10,8 @@ import {
   marketingData,
   navCards,
 } from "../../assets/navData";
+import { baseUrl } from "../../main";
+import axios from "axios";
 
 const Navbar = () => {
   const [openCardIndex, setOpenCardIndex] = useState(null);
@@ -62,6 +64,39 @@ const Navbar = () => {
   }, [openCardIndex]);
 
   const contact_nav = location.pathname;
+
+  const [marketingNewData, setMarketingNewData] = useState([]);
+  const [developmentNewData, setDevelopmentNewData] = useState([]);
+  const [designNewData, setDesignNewData] = useState([]);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const { data } = await axios.get(`${baseUrl}/service/all-services`);
+        const services = data?.services || [];
+
+        const marketing = [];
+        const development = [];
+        const design = [];
+
+        services.forEach((service) => {
+          const selected = service?.selectedService?.toLowerCase();
+          if (selected === "marketing") marketing.push(service);
+          else if (selected === "development") development.push(service);
+          else if (selected === "design") design.push(service);
+        });
+
+        setMarketingNewData(marketing);
+        setDevelopmentNewData(development);
+        setDesignNewData(design);
+      } catch (err) {
+        console.error("❌ Error fetching services:", err);
+      }
+    };
+
+    fetchServices();
+  }, []);
+
   return (
     <div
       className={`navbar ${isScrolled ? "blurred" : ""} ${
@@ -107,6 +142,15 @@ const Navbar = () => {
                           <span>{item.title}</span>
                         </Link>
                       ))}
+                      {designNewData?.map((item, index) => (
+                        <Link
+                          to={`/service/1`}
+                          className="nav-card-link"
+                          key={index}
+                        >
+                          <span>{item.bannerSection.serviceName}</span>
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -145,6 +189,16 @@ const Navbar = () => {
                           key={index}
                         >
                           <span>{item.title}</span>
+                        </Link>
+                      ))}
+
+                      {developmentNewData?.map((item, index) => (
+                        <Link
+                          to={`/service/1`}
+                          className="nav-card-link"
+                          key={index}
+                        >
+                          <span>{item.bannerSection.serviceName}</span>
                         </Link>
                       ))}
                     </div>
@@ -188,6 +242,15 @@ const Navbar = () => {
                           <span>{item.title}</span>
                         </Link>
                       ))}
+                      {marketingNewData?.map((item, index) => (
+                        <Link
+                          to={`/service/1`}
+                          className="nav-card-link"
+                          key={index}
+                        >
+                          <span>{item.bannerSection.serviceName}</span>
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -205,7 +268,7 @@ const Navbar = () => {
               </div>
             )}
           </li>
-         
+
           <li>
             <Link to={"/founder"}>Founder</Link>
           </li>

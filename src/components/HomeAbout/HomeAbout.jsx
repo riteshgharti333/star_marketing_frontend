@@ -13,10 +13,49 @@ import BrandCards from "../BrandCards/BrandCards";
 import collage_img from "../../assets/images/collage.jpeg";
 import { Link } from "react-router-dom";
 
+import { baseUrl } from "../../main";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../components/Loader/Loader";
+
+const fetchReview = async () => {
+  if (!navigator.onLine) {
+    throw new Error("NETWORK_ERROR");
+  }
+  const { data } = await axios.get(`${baseUrl}/review/all-reviews`);
+  return data?.reviews;
+};
+
 const HomeAbout = () => {
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
   const swiperRef = useRef(null);
+
+  const { data, isLoading, isError, error, refetch } = useQuery({
+    queryKey: ["review"],
+    queryFn: fetchReview,
+    staleTime: 1000 * 60 * 5,
+    retry: 2,
+  });
+
+  if (isError) {
+    console.log("🔴 Error Object:", error);
+    if (error.name === "AxiosError") {
+      const isNetworkError =
+        !error.response ||
+        error.message.includes("ECONNRESET") ||
+        error.response?.data?.message === "read ECONNRESET";
+
+      if (isNetworkError) {
+        setTimeout(() => {
+          toast.error("🚫 Network error. Please check your connection.");
+        }, 100);
+      } else {
+        console.error("❗ Server Error:", error.response?.status);
+      }
+    }
+  }
 
   return (
     <div className="homeAbout">
@@ -60,67 +99,77 @@ const HomeAbout = () => {
             </h3>
           </div>
 
-          <div className="homeAbout-bottom-cards">
-            <Swiper
-              modules={[Navigation]}
-              spaceBetween={30}
-              slidesPerView={1}
-              slidesPerGroup={1}
-              onSwiper={(swiper) => (swiperRef.current = swiper)}
-              onReachBeginning={() => setIsBeginning(true)}
-              onReachEnd={() => setIsEnd(true)}
-              onFromEdge={() => {
-                setIsBeginning(false);
-                setIsEnd(false);
-              }}
-              navigation={{
-                prevEl: ".swiper-button-prev-custom",
-                nextEl: ".swiper-button-next-custom",
-              }}
-              speed={1000}
-              breakpoints={{
-                0: { slidesPerView: 1 },
-                480: { slidesPerView: 1.2 },
-                768: { slidesPerView: 1.5 },
-                1024: { slidesPerView: 2.2 },
-              }}
-            >
-              {reviewData.map((item, index) => (
-                <SwiperSlide key={index}>
-                  <div className="homeAbout-bottom-card">
-                    <h4>" {item.review} "</h4>
-                    <div className="homeAbout-bottom-card-profile">
-                      <img src={item.img} alt={item.title} loading="lazy" />
-                      <div className="homeAbout-bottom-card-profile-right">
-                        <p>{item.title}</p>
-                        <p>{item.desc}</p>
-                      </div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-
-            {/* Custom Arrows */}
-            <div className="review-nav-buttons">
-              <div
-                className={`swiper-button-prev-custom ${
-                  isBeginning ? "disabled" : ""
-                }`}
-                onClick={() => swiperRef.current?.slidePrev()}
-              >
-                <GoArrowLeft />
-              </div>
-              <div
-                className={`swiper-button-next-custom ${
-                  isEnd ? "disabled" : ""
-                }`}
-                onClick={() => swiperRef.current?.slideNext()}
-              >
-                <GoArrowRight />
+          {isLoading ? (
+            <Loader />
+          ) : isError ? (
+            <div className="error">
+              <div className="error-desc">
+                <h3>❌ Failed to load reviews</h3>
+                <p>Try refreshing the page or check your connection.</p>
               </div>
             </div>
-          </div>
+          ) : (
+            <div className="homeAbout-bottom-cards">
+              <Swiper
+                modules={[Navigation]}
+                spaceBetween={30}
+                slidesPerView={1}
+                slidesPerGroup={1}
+                onSwiper={(swiper) => (swiperRef.current = swiper)}
+                onReachBeginning={() => setIsBeginning(true)}
+                onReachEnd={() => setIsEnd(true)}
+                onFromEdge={() => {
+                  setIsBeginning(false);
+                  setIsEnd(false);
+                }}
+                navigation={{
+                  prevEl: ".swiper-button-prev-custom",
+                  nextEl: ".swiper-button-next-custom",
+                }}
+                speed={1000}
+                breakpoints={{
+                  0: { slidesPerView: 1 },
+                  480: { slidesPerView: 1.2 },
+                  768: { slidesPerView: 1.5 },
+                  1024: { slidesPerView: 2.2 },
+                }}
+              >
+                {data?.map((item, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="homeAbout-bottom-card">
+                      <h4>" {item.description} "</h4>
+                      <div className="homeAbout-bottom-card-profile">
+                        <img src={item.image} alt={item.title} loading="lazy" />
+                        <div className="homeAbout-bottom-card-profile-right">
+                          <p>{item.name}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              {/* Custom Arrows */}
+              <div className="review-nav-buttons">
+                <div
+                  className={`swiper-button-prev-custom ${
+                    isBeginning ? "disabled" : ""
+                  }`}
+                  onClick={() => swiperRef.current?.slidePrev()}
+                >
+                  <GoArrowLeft />
+                </div>
+                <div
+                  className={`swiper-button-next-custom ${
+                    isEnd ? "disabled" : ""
+                  }`}
+                  onClick={() => swiperRef.current?.slideNext()}
+                >
+                  <GoArrowRight />
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

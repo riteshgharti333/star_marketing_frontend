@@ -4,7 +4,47 @@ import banner_video from "../../assets/bannerVideo/bannervideo.mp4";
 import { brandCards } from "../../assets/serviceSliderData/partnerCards";
 import { homeBrandCards } from "../../assets/data";
 
+import { baseUrl } from "../../main";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../components/Loader/Loader";
+
+const fetchCards = async () => {
+  if (!navigator.onLine) {
+    throw new Error("NETWORK_ERROR");
+  }
+  const { data } = await axios.get(`${baseUrl}/company-card/all-company-cards`);
+
+  return data?.companyCard;
+};
+
 function HomeBanner() {
+  const { data, isLoading, isError, error, refetch } = useQuery({
+    queryKey: ["company-cards"],
+    queryFn: fetchCards,
+    staleTime: 1000 * 60 * 5,
+    retry: 2,
+  });
+
+  if (isError) {
+    console.log("🔴 Error Object:", error);
+    if (error.name === "AxiosError") {
+      const isNetworkError =
+        !error.response ||
+        error.message.includes("ECONNRESET") ||
+        error.response?.data?.message === "read ECONNRESET";
+
+      if (isNetworkError) {
+        setTimeout(() => {
+          toast.error("🚫 Network error. Please check your connection.");
+        }, 100);
+      } else {
+        console.error("❗ Server Error:", error.response?.status);
+      }
+    }
+  }
+
   return (
     <div className="homeBanner">
       <div className="banner-video">
@@ -45,13 +85,24 @@ function HomeBanner() {
       </div>
 
       <div className="homeBanner-cards-container">
-        <div className="homeBanner-cards-track">
-          {[...homeBrandCards, ...homeBrandCards].map((item, index) => (
-            <div className="homeBanner-card" key={index}>
-              <img src={item.img} alt="brand-image" loading="lazy" />
+        {isLoading ? (
+          <Loader />
+        ) : isError ? (
+          <div className="error">
+            <div className="error-desc">
+              <h3>❌ Failed to load cards</h3>
+              <p>Try refreshing the page or check your connection.</p>
             </div>
-          ))}
-        </div>
+          </div>
+        ) : (
+          <div className="homeBanner-cards-track">
+            {[...data, ...data].map((item, index) => (
+              <div className="homeBanner-card" key={index}>
+                <img src={item.image} alt="brand-image" loading="lazy" />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

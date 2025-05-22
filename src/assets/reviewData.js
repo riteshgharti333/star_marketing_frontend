@@ -15,12 +15,12 @@ export const reviewData = [
 
   {
     img: review_img2,
-    title: "Imran Mansoori ",
+    title: "Imran Mansoori",
     review: "Good work 👍",
   },
   {
     img: review_img3,
-    title: "Campa Cola ",
+    title: "Campa Cola",
     review:
       "The Google ads was performed well last 6 months thanks mr sohel and star marketing.",
   },

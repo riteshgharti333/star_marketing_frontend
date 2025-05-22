@@ -5,6 +5,8 @@ import App from "./App.jsx";
 import "./styles/global.scss";
 import { HelmetProvider } from "react-helmet-async";
 
+export const baseUrl = import.meta.env.VITE_BASE_URL;
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <HelmetProvider>

@@ -14,6 +14,43 @@ a {
 }
 
 .app {
+  .error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    .error-desc {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      color: #fff;
+      text-transform: capitalize !important;
+
+      p {
+        text-transform: capitalize !important;
+      }
+
+      &.dif-err {
+        color: #000;
+      }
+
+      button {
+        padding: 5px 10px;
+        background: #2671fe;
+        color: #fff;
+        border: none;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+          background: #1c448f;
+        }
+      }
+    }
+  }
+
   button,
   input,
   textarea {
