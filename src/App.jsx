@@ -42,6 +42,7 @@ import WorksPage2 from "./pages/WorksPage/WorksPage2/WorksPage2";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import NewService from "./pages/NewService/NewService";
+import NewPageService from "./pages/NewPageService/NewPageService";
 
 function App() {
   useEffect(() => {
@@ -53,11 +54,11 @@ function App() {
   return (
     <div className="app">
       <QueryClientProvider client={queryClient}>
-        {/* <CurtainLoader /> */}
+        <CurtainLoader />
         <ContactButtons />
-        {/* <OfferComp /> */}
+        <OfferComp />
         <BrowserRouter>
-          {/* <ScrollToTopAndTrack /> */}
+          <ScrollToTopAndTrack />
 
           <Navbar />
           <Routes>
@@ -132,7 +133,10 @@ function App() {
             <Route path="/how-social-media-works?" element={<WorksPage2 />} />
 
             {/* Service */}
-            <Route path="/service/:id" element={<NewService />} />
+            <Route
+              path="/service/:serviceType/:serviceName/:id"
+              element={<NewPageService />}
+            />
           </Routes>
 
           <Footer />

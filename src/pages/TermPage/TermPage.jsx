@@ -8,15 +8,70 @@ const TermPage = () => {
           <h1>
             STAR MARKETING <span>Terms & Conditions</span>
           </h1>
-          <p>Last Updated: {new Date().toLocaleDateString()}</p>
+          <p>Last Updated: 05/06/2025</p>
         </div>
 
         <div className="terms-content">
           {/* Section 1 */}
           <div className="section">
             <h2>
-              <span className="section-number">1</span> Purchases, Payments, and
-              Refunds
+              <span className="section-number">1</span> Payment Terms
+            </h2>
+            <div className="article">
+              <p>
+                <strong>A 50% advance payment</strong> is required to initiate the project.
+              </p>
+              <p>
+                <strong>The remaining 50%</strong> is due upon 50% completion of the website or service agreed upon.
+              </p>
+              <p>
+                Work will <strong>resume/continue only after</strong> the balance payment is cleared.
+              </p>
+            </div>
+          </div>
+
+          {/* Section 2 */}
+          <div className="section">
+            <h2>
+              <span className="section-number">2</span> Post-Completion Modifications
+            </h2>
+            <div className="article">
+              <p>
+                Once the project is completed, clients have <strong>7 calendar days</strong> to request modifications related to:
+              </p>
+              <ul>
+                <li>Corrections</li>
+                <li>Errors</li>
+                <li>Revisions in website</li>
+                <li>Social Media Marketing</li>
+                <li>SEO</li>
+                <li>Any additional services provided</li>
+              </ul>
+              <p>
+                Modification requests beyond this period may be subject to <strong>additional charges</strong>.
+              </p>
+            </div>
+          </div>
+
+          {/* Section 3 */}
+          <div className="section">
+            <h2>
+              <span className="section-number">3</span> Purchase Order Confirmation
+            </h2>
+            <div className="article">
+              <p>
+                A <strong>written purchase order (PO) or formal approval</strong> is mandatory from the client before starting any project.
+              </p>
+              <p>
+                The confirmation must be provided via <strong>email and/or WhatsApp</strong> as an official acknowledgment of the service agreement.
+              </p>
+            </div>
+          </div>
+
+          {/* Section 4 */}
+          <div className="section">
+            <h2>
+              <span className="section-number">4</span> Purchases, Payments, and Refunds
             </h2>
             <div className="article">
               <h3>Payment Obligations:</h3>
@@ -38,10 +93,10 @@ const TermPage = () => {
             </div>
           </div>
 
-          {/* Section 2 */}
+          {/* Section 5 */}
           <div className="section">
             <h2>
-              <span className="section-number">2</span> Dispute Resolution and
+              <span className="section-number">5</span> Dispute Resolution and
               Legal Jurisdiction
             </h2>
             <div className="article">
@@ -62,10 +117,10 @@ const TermPage = () => {
             </div>
           </div>
 
-          {/* Section 3 */}
+          {/* Section 6 */}
           <div className="section">
             <h2>
-              <span className="section-number">3</span> Amendments and
+              <span className="section-number">6</span> Amendments and
               Termination
             </h2>
             <div className="article">
@@ -85,10 +140,10 @@ const TermPage = () => {
             </div>
           </div>
 
-          {/* Section 4 */}
+          {/* Section 7 */}
           <div className="section">
             <h2>
-              <span className="section-number">4</span> Liability and Warranties
+              <span className="section-number">7</span> Liability and Warranties
             </h2>
             <div className="article">
               <h3>Limitation of Liability:</h3>
@@ -107,10 +162,10 @@ const TermPage = () => {
             </div>
           </div>
 
-          {/* Section 5 */}
+          {/* Section 8 */}
           <div className="section">
             <h2>
-              <span className="section-number">5</span> User Responsibilities
+              <span className="section-number">8</span> User Responsibilities
             </h2>
             <div className="article">
               <h3>Accurate Information:</h3>
@@ -128,10 +183,10 @@ const TermPage = () => {
             </div>
           </div>
 
-          {/* Section 6 - Contact */}
+          {/* Section 9 - Contact */}
           <div className="section">
             <h2>
-              <span className="section-number">6</span> Contact Information
+              <span className="section-number">9</span> Contact Information
             </h2>
             <p style={{ marginBottom: "15px" }}>
               For questions or disputes, contact:{" "}

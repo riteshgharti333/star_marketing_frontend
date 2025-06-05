@@ -13,7 +13,7 @@ const fetchCards = async () => {
     throw new Error("NETWORK_ERROR");
   }
   const { data } = await axios.get(`${baseUrl}/company-card/all-company-cards`);
- 
+
   return data?.companyCard;
 };
 
@@ -51,8 +51,8 @@ const BrandCards = () => {
   const cardsPerSlide = 6;
   // Chunk the data into arrays of 6 items
   const chunks = [];
-  for (let i = 0; i < brandCards.length; i += cardsPerSlide) {
-    chunks.push(brandCards.slice(i, i + cardsPerSlide));
+  for (let i = 0; i < data?.length; i += cardsPerSlide) {
+    chunks.push(data?.slice(i, i + cardsPerSlide));
   }
 
   useEffect(() => {
@@ -79,7 +79,7 @@ const BrandCards = () => {
     return () => clearInterval(interval);
   }, [isMobile, chunks.length]);
 
-  const displayedCards = isMobile ? chunks[currentSlide] : brandCards;
+  const displayedCards = isMobile ? chunks[currentSlide] : data;
 
   return (
     <div className="brandCards">
@@ -98,7 +98,7 @@ const BrandCards = () => {
         </div>
       ) : (
         <div className="brand-cards">
-          {data?.map((item, index) => (
+          {displayedCards?.map((item, index) => (
             <div className="brand-card" key={index}>
               <img src={item.image} alt={`brand-${index}`} loading="lazy" />
             </div>

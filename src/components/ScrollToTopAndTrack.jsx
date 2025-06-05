@@ -1,13 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { trackPageView } from "../utils/analytics";
 
 const ScrollToTopAndTrack = () => {
   const { pathname, search } = useLocation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
+  useLayoutEffect(() => {
+    document.documentElement.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "instant",
+    });
+  }, [pathname]);
 
+  useEffect(() => {
     trackPageView(pathname + search);
   }, [pathname, search]);
 

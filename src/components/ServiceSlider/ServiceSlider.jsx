@@ -8,7 +8,7 @@ import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import { useRef, useState } from "react";
 import { webCards } from "../../assets/data";
 
-const ServiceSlider = ({ serviceData, dot }) => {
+const ServiceSlider = ({ serviceData, dot, diff }) => {
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
   const swiperRef = useRef(null);
@@ -16,8 +16,17 @@ const ServiceSlider = ({ serviceData, dot }) => {
   return (
     <div className="serviceSlider">
       <div className="serviceSlider-top">
-        <h2>{serviceData.title}</h2>
-        <p>{serviceData.desc}</p>
+        {diff === "newService" ? (
+          <>
+            <h2>{serviceData?.title}</h2>
+            <p>{serviceData?.desc}</p>
+          </>
+        ) : (
+          <>
+            <h2>{serviceData.title}</h2>
+            <p>{serviceData.desc}</p>
+          </>
+        )}
       </div>
 
       <div className="serviceSlider-cards">
@@ -45,20 +54,33 @@ const ServiceSlider = ({ serviceData, dot }) => {
             1024: { slidesPerView: 2.5 },
           }}
         >
-          {serviceData.serviceCards.map((item, index) => (
-            <SwiperSlide key={index}>
-              <div className="serviceSlider-card">
-                <div className="serviceSlider-card-top">
-                  <span>
-                    <div className={`dot ${dot}`}></div>Service
-                  </span>
-                  <h4>{item.title}</h4>
-                </div>
-
-                <p>{item.desc}</p>
-              </div>
-            </SwiperSlide>
-          ))}
+          {diff === "newService"
+            ? serviceData?.items?.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <div className="serviceSlider-card">
+                    <div className="serviceSlider-card-top">
+                      <span>
+                        <div className={`dot ${dot}`}></div>Service
+                      </span>
+                      <h4>{item.title}</h4>
+                    </div>
+                    <p>{item.desc}</p>
+                  </div>
+                </SwiperSlide>
+              ))
+            : serviceData.serviceCards.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <div className="serviceSlider-card">
+                    <div className="serviceSlider-card-top">
+                      <span>
+                        <div className={`dot ${dot}`}></div>Service
+                      </span>
+                      <h4>{item.title}</h4>
+                    </div>
+                    <p>{item.desc}</p>
+                  </div>
+                </SwiperSlide>
+              ))}
         </Swiper>
 
         {/* Custom Arrows */}

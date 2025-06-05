@@ -103,9 +103,9 @@ const Navbar = () => {
         contact_nav === "/contact-us" && "contact-nav"
       }`}
     >
-      <div className="navbar-left">
+      <Link to="/" className="navbar-left">
         <img src={logo} alt="star marketing image" loading="lazy" />
-      </div>
+      </Link>
 
       <div className="nav-mobile-menu">
         <MobileMenu />
@@ -144,7 +144,7 @@ const Navbar = () => {
                       ))}
                       {designNewData?.map((item, index) => (
                         <Link
-                          to={`/service/1`}
+                            to={`/service/${item.selectedService}/${item.bannerSection.serviceName}/${item._id}`}
                           className="nav-card-link"
                           key={index}
                         >
@@ -194,7 +194,7 @@ const Navbar = () => {
 
                       {developmentNewData?.map((item, index) => (
                         <Link
-                          to={`/service/1`}
+                          to={`/service/${item.selectedService}/${item.bannerSection.serviceName}/${item._id}`}
                           className="nav-card-link"
                           key={index}
                         >
@@ -244,7 +244,7 @@ const Navbar = () => {
                       ))}
                       {marketingNewData?.map((item, index) => (
                         <Link
-                          to={`/service/1`}
+                          to={`/service/${item.selectedService}/${item.bannerSection.serviceName}/${item._id}`}
                           className="nav-card-link"
                           key={index}
                         >

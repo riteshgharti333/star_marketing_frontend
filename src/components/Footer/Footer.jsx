@@ -47,20 +47,6 @@ const Footer = () => {
               <p>+91 8209326351</p>
             </div>
           </div>
-
-          <div className="footer-address-item">
-            <div className="address-top">
-              <p>Branch 01 London</p>
-              <p>506a Ladymargret Road Southall Ub1 2np</p>
-            </div>
-          </div>
-
-          <div className="footer-address-item">
-            <div className="address-top">
-              <p>Branch 02 Mumbai</p>
-              <p>Opp Gcc club Mira Road, Est, Mumbai</p>
-            </div>
-          </div>
         </div>
       </div>
       <hr className="footer-line" />

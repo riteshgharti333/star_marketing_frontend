@@ -80,9 +80,9 @@ const HomeAbout = () => {
               </Link>
             </div>
           </div>
-          <div className="homeAbout-top-right">
+          {/* <div className="homeAbout-top-right">
             <img src={collage_img} alt="partner-image" loading="lazy" />
-          </div>
+          </div> */}
         </div>
         <div className="homeAbout-center">
           <BrandCards />

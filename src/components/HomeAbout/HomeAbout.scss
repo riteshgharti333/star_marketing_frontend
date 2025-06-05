@@ -188,9 +188,6 @@
           justify-content: space-between;
           border-radius: 20px;
 
-          @include md {
-            height: 100%;
-          }
           h4 {
             font-size: 23px;
             color: #fff;
@@ -224,10 +221,12 @@
 
             .homeAbout-bottom-card-profile-right {
               p {
-                  color: #fff;
-                  font-size: 22px;
+                color: #fff;
+                font-size: 22px;
 
-                
+                @include md {
+                  font-size: 18px;
+                }
               }
             }
           }
